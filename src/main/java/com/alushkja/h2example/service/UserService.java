@@ -2,13 +2,14 @@ package com.alushkja.h2example.service;
 
 import com.alushkja.h2example.model.User;
 import com.alushkja.h2example.repository.UserRepository;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface UserService{
 
-    List<User> findAll();
+//    List<User> findAll();
 
     <S extends User> S save(S entity);
 
@@ -17,4 +18,8 @@ public interface UserService{
     void deleteById(Long aLong);
 
     void delete(User entity);
+
+    Iterable<User> findAll(Pageable pageable);
+
+    long count();
 }

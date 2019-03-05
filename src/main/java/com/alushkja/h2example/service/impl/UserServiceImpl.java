@@ -4,6 +4,7 @@ import com.alushkja.h2example.model.User;
 import com.alushkja.h2example.repository.UserRepository;
 import com.alushkja.h2example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,11 +15,11 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository repository;
-
-    @Override
-    public List<User> findAll() {
-        return repository.findAll();
-    }
+//
+//    @Override
+//    public Iterable<User> findAll() {
+//        return repository.findAll();
+//    }
 
     @Override
     public <S extends User> S save(S entity) {
@@ -38,5 +39,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(User entity) {
         repository.delete(entity);
+    }
+
+    @Override
+    public Iterable<User> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
+
+    @Override
+    public long count() {
+        return repository.count();
     }
 }

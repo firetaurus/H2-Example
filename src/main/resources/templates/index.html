@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <title>Users Information</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> User Information </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <!--<thead>-->
+                <!--<tr>-->
+                    <!--<th>Email</th>-->
+                    <!--<th>Password</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--<tr>-->
+                    <!--<td><span th:text="${user.id}">Id</span></td>-->
+                    <!--<td><span th:text="${user.name}">Name</span></td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+
+                <th:block>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.name}"></td>
+                    </tr>
+                </th:block>
+            </table>
+
+            <br>
+            <br>
+            <th:block th:each="i : ${#numbers.sequence( 0, lastPageNo - 1)}" >
+
+                <a th:href="@{/rest/users(pageNo=${i })}" th:text="${i+1 }">1</a>&nbsp;&nbsp;&nbsp;&nbsp;	<!-- Displaying Page No -->
+            </th:block>
+        </div>
+    </div>
+</div>
+</body>
+</html>
