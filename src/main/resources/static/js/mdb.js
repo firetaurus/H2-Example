@@ -15135,7 +15135,7 @@ var WOW;
 
     /**
      * Collection of wrapper for HTML element that only have single tag
-     * like <input> and <img>
+     * like <input> and <images>
      */
     var TagWrapper = {
 
@@ -15160,7 +15160,7 @@ var WOW;
 
         },
 
-        // Wrap <img> tag so it can perform the effect
+        // Wrap <images> tag so it can perform the effect
         img: function(element) {
 
             var parent = element.parentNode;

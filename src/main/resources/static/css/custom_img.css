@@ -1,9 +1,9 @@
 td.details {
-    background-image: url('/img/sort_desc.png') no-repeat center center;
+    background: url('.././images/sort_desc.png') no-repeat center center;
     cursor: pointer;
 }
 
 tr.shown td.details {
-    background: url('/img/sort_asc.png') no-repeat center center;
+    background: url('../images/sort_asc.png') no-repeat center center;
     cursor: pointer;
 }
