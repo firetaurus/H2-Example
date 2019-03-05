@@ -20,11 +20,11 @@ import java.util.Set;
 @Controller
 public class UserController {
 
-    private static int PAGE_SIZE = 3;   // number of rows to container per page
+    private static int PAGE_SIZE = 5;   // number of rows to container per page
     private long totalUserCount;    // total number of rows in DB
 
     private PageRequest gotoPage(int page){
-        PageRequest request = PageRequest.of(page, PAGE_SIZE, Sort.Direction.DESC, "id");
+        PageRequest request = PageRequest.of(page, PAGE_SIZE, Sort.Direction.ASC, "id");
         return request;
     }
 
