@@ -10,23 +10,24 @@
     <!-- Your custom styles (optional) -->
     <link href="/css/style.css" rel="stylesheet">
     <!-- DataTables .js -->
-    <link href="/js/addons/datatables.js" rel="stylesheet" type="text/css"/>
     <!-- DataTables .css -->
-    <link href="/css/addons/datatables.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/addons/datatables.min.css" rel="stylesheet">
 
-    <style type="text/css">
+    <link href="/css/custom_img.css" rel="stylesheet">
 
-        td.details {
-            background: url('/img/sort_desc.png') no-repeat center center;
-            cursor: pointer;
-        }
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/js/mdb.js"></script>
 
-        tr.shown td.details {
-            background: url('/img/sort_asc.png') no-repeat center center;
-            cursor: pointer;
-        }
+    <script type="text/javascript" src="/js/list_persons_simple.js"></script>
 
-    </style>
+    <script type="text/javascript" src="/js/addons/datatables.min.js"></script>
 
     <title>Users Information</title>
 </head>
@@ -61,14 +62,14 @@
     <div class="row">
         <div class="col-md-12">
 
-            <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+            <table id="datatable" class="display table table-striped table-bordered" style="width:100%">
                 <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>Country</th>
-                </tr>
+                    <tr>
+                        <th>Id</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Country</th>
+                    </tr>
                 </thead>
                 <tbody>
                 <th:block>
@@ -90,17 +91,6 @@
         </div>
     </div>
 </div>
-<!-- SCRIPTS -->
-<!-- JQuery -->
-<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="js/mdb.js"></script>
 
-<script type="text/javascript" src="/js/list_person_simple.js"></script>
-<!-- SCRIPTS -->
 </body>
 </html>
