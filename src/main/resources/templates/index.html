@@ -10,10 +10,9 @@
     <!-- Your custom styles (optional) -->
     <link href="/css/style.css" rel="stylesheet">
     <!-- DataTables .js -->
-    <!-- DataTables .css -->
     <link href="/css/addons/datatables.min.css" rel="stylesheet">
 
-    <link href="/css/custom_img.css" rel="stylesheet">
+    <!--<link href="/css/custom_img.css" rel="stylesheet">-->
 
     <!-- SCRIPTS -->
     <!-- JQuery -->
@@ -29,15 +28,15 @@
 
     <script type="text/javascript" src="/js/addons/datatables.min.js"></script>
 
-    <!--<script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>-->
+    <script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
     <!--<script type="text/javascript" src="/js/jquery.js"></script>-->
     <!--<script type="text/javascript" src="/js/jquery-ui.min.js"></script>-->
     <!--<script type="text/javascript" src="/js/jquery-dateFormat.min.js"></script>-->
-    <!--<script type="text/javascript" src="/js/Italian.json"></script>-->
+    <script type="text/javascript" src="/js/Italian.json"></script>
 
     <title>Users Information</title>
 </head>
-<body class="text-center">
+<body class="align-content-center">
 <div class="container">
     <div class="row text-center">
         <div class="col-md-12">
@@ -46,24 +45,24 @@
     </div>
         <div class="row text-center" >
 
-            <div class="col-md-12 form-group">
-                <form action="" id="formSearch" method="post">
-                    <input type="hidden" name="search" id="search" value="">
-                    <table>
-                        <tr>
-                            <td>Name: </td>
-                            <td><input type="text" class="form-control" placeholder="First name" name="name"></td>
-                            <td>Surname: </td>
-                            <td><input type="text" class="form-control" placeholder="Last name" name="surname"></td>
-                            <td>Country: </td>
-                            <td><input type="text" class="form-control" placeholder="Country" name="country"></td>
-                            <td>
-                                <input type="button" value="Search" class="btn btn-primary" name="btnSearch" id="btnSearch">
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
+            <!--<div class="col-md-12 form-group">-->
+                <!--<form action="" id="formSearch" method="post">-->
+                    <!--<input type="hidden" name="search" id="search" value="">-->
+                    <!--<table>-->
+                        <!--<tr>-->
+                            <!--<td>Name: </td>-->
+                            <!--<td><input type="text" class="form-control" placeholder="First name" name="name"></td>-->
+                            <!--<td>Surname: </td>-->
+                            <!--<td><input type="text" class="form-control" placeholder="Last name" name="surname"></td>-->
+                            <!--<td>Country: </td>-->
+                            <!--<td><input type="text" class="form-control" placeholder="Country" name="country"></td>-->
+                            <!--<td>-->
+                                <!--<input type="button" value="Search" class="btn btn-primary" name="btnSearch" id="btnSearch">-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
+                <!--</form>-->
+            <!--</div>-->
         </div>
     <div class="row">
         <div class="col-md-12">
@@ -71,7 +70,7 @@
             <table id="datatable" class="display table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <!--<th>Id</th>-->
                         <th>First name</th>
                         <th>Last name</th>
                         <th>Country</th>
@@ -80,10 +79,13 @@
                 <tbody>
                 <th:block>
                     <tr th:each="user : ${users}">
-                        <td th:text="${user.id}"></td>
+                        <!--<td th:text="${user.id}"></td>-->
                         <td th:text="${user.first_name}"></td>
                         <td th:text="${user.last_name}"></td>
+                        <td th:text="${user.username}"></td>
                         <td th:text="${user.country}"></td>
+                        <td th:text="${user.city}"></td>
+                        <td th:text="${user.zip}"></td>
                     </tr>
                 </th:block>
                 </tbody>

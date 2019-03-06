@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.w3.org/1999/xhtml">
+<style>
+    .pagination {
+        display: inline-block;
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 5px 5px;
+        text-decoration: none;
+    }
+
+    .pagination a.active {
+        background-color: gray;
+        color: white;
+        border-radius: 2px;
+    }
+</style>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="/css/style.css" rel="stylesheet">
+
+    <link href="/css/addons/datatables.min.css" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/js/mdb.min.js"></script>
+    <script type="text/javascript" src="/js/list_persons_simple.js"></script>
+
+    <script type="text/javascript" src="/js/addons/datatables.min.js"></script>
+
+    <script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
+    <title>User List</title>
+</head>
+<body>
+<div class="container">
+    <div class="row text-center">
+        <div class="col-md-12">
+            <h1>User List</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <form class="text-center justify-content-center">
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationServer013">First name</label>
+                    <input type="text" class="form-control is-valid" id="validationServer013" placeholder="Nome"
+                           value="Mark" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationServer023">Last name</label>
+                    <input type="text" class="form-control is-valid" id="validationServer023" placeholder="Cognome "
+                           value="Otto" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-md-4 mb-3">-->
+            <!--<label for="validationServerUsername33">Username</label>-->
+            <!--<div class="input-group">-->
+            <!--<div class="input-group-prepend">-->
+            <!--<span class="input-group-text" id="inputGroupPrepend33">@</span>-->
+            <!--</div>-->
+            <!--<input type="text" class="form-control is-invalid" id="validationServerUsername33"-->
+            <!--placeholder="Username"-->
+            <!--aria-describedby="inputGroupPrepend33" required>-->
+            <!--<div class="invalid-feedback">-->
+            <!--Please choose a username.-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="form-row">
+                <div class="col-md-4 mb-3 ">
+                    <label for="validationServer033">City</label>
+                    <input type="text" class="form-control is-invalid" id="validationServer033" placeholder="Città"
+                           required>
+                    <div class="invalid-feedback">
+                        Please provide a valid city.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3 ">
+                    <label for="validationServer043">State</label>
+                    <input type="text" class="form-control is-invalid" id="validationServer043" placeholder="Stato"
+                           required>
+                    <div class="invalid-feedback">
+                        Please provide a valid state.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3 ">
+                    <label for="validationServer053">Zip</label>
+                    <input type="text" class="form-control is-invalid" id="validationServer053" placeholder="Zip_Code"
+                           required>
+                    <div class="invalid-feedback">
+                        Please provide a valid zip.
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                <!--<div class="custom-control custom-checkbox">-->
+                <!--<input type="checkbox" class="custom-control-input is-invalid" id="invalidCheck33" required>-->
+                <!--<label class="custom-control-label" for="invalidCheck33">Agree to terms and conditions</label>-->
+                <!--<div class="invalid-feedback">-->
+                <!--You must agree before submitting.-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="invalid-feedback">-->
+                <!--You must agree before submitting.-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+            <button class="btn btn-primary btn-sm" type="submit">Search</button>
+        </form>
+
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" style="width:100%">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Username</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>Zip</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user, iStat : ${userPage.content}"
+                    th:style="${iStat.odd}? 'font-weight: bold;'"
+                    th:alt-title="${iStat.even}? 'even' : 'odd'">
+                    <td th:text="${user.id}"/>
+                    <td th:text="${user.first_name}"/>
+                    <td th:text="${user.last_name}"/>
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.country}"></td>
+                    <td th:text="${user.city}"></td>
+                    <td th:text="${user.zip}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--<div class="row">-->
+    <!--<div th:if="${userPage.totalPages >= 0}" class="pagination"-->
+    <!--th:each="pageNumber : ${pageNumbers}">-->
+    <!--<a th:href="@{/rest/users(size=${userPage.size}, page=${pageNumber})}"-->
+    <!--th:text=${pageNumber}-->
+    <!--th:class="${pageNumber==userPage.number + 1} ? active"></a>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>
+
+
+</body>
+</html>
