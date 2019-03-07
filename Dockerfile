@@ -2,7 +2,7 @@
 FROM openjdk:8-jre-alpine
 RUN apk add --no-cache bash
 # copy WAR into image
-COPY /target/h2-example-0.0.1-SNAPSHOT.jar /app.jar
+COPY /docker/h2-example-0.0.1-SNAPSHOT.jar /app.jar
 # copy xml file into image
 COPY logback.xml /logback.xml
 # copy sh file into image
