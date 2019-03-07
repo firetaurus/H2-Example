@@ -1,0 +1,1 @@
+docker run -d --name bootapp -v "C:\Users\aldo.lushkja\Desktop\spring-workspace\logs":/var/log/Application/ -p 8081:8081 h2-example:latest dev

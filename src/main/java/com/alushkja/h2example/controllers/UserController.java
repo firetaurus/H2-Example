@@ -3,20 +3,16 @@ package com.alushkja.h2example.controllers;
 import com.alushkja.h2example.model.User;
 import com.alushkja.h2example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import javax.jws.WebParam;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -33,12 +29,15 @@ public class UserController {
 //    }
 
     @Autowired
+    MessageSource messageSource;
+
+    @Autowired
     UserService service;
 
     @GetMapping
     public String index(Model model,
                         @RequestParam("page") Optional<Integer> page,
-                        @RequestParam("size") Optional<Integer> size){
+                        @RequestParam("size") Optional<Integer> size) {
 
 //        //TODO: make some validation on page number
 //        int lastPageNo;
@@ -77,6 +76,21 @@ public class UserController {
         return "listUsers.html";
     }
 
+    @PostMapping("/post")
+    public String query(@ModelAttribute(value = "userForm") User user, Model uiModel){
+
+//        System.out.println(user.getFirst_name());
+
+        final int currentPage = 1;
+        final int pageSize = 100;
+        User newUser = user;
+
+        Page<User> userPage = service.findAllFiltered(PageRequest.of(currentPage - 1, pageSize), user.getFirst_name(),user.getLast_name(),user.getUsername(),user.getCountry(),user.getCity(),user.getZip());
+
+        uiModel.addAttribute("userPage", newUser);
+
+        return "listUsers.html";
+    }
 
 
 }

@@ -16,4 +16,5 @@ public interface UserService {
 
     List<User> findAll();
 
+    Page<User> findAllFiltered(Pageable pageable, String name, String surname, String username, String country, String state, Integer zip);
 }

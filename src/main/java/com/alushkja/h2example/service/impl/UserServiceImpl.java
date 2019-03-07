@@ -3,7 +3,6 @@ package com.alushkja.h2example.service.impl;
 import com.alushkja.h2example.model.User;
 import com.alushkja.h2example.repository.UserRepository;
 import com.alushkja.h2example.service.UserService;
-import com.alushkja.h2example.util.UserUtils;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -54,4 +53,16 @@ public class UserServiceImpl implements UserService {
         return Lists.newArrayList(repository.findAll());
     }
 
+    @Override
+    public Page<User> findAllFiltered(Pageable pageable, String name, String surname, String username, String country, String state, Integer zip) {
+        int pageSize = pageable.getPageSize();
+        int currentPage = pageable.getPageNumber();
+        int startItem = currentPage * pageSize;
+
+        Page<User> userPage = findAllFiltered(pageable, name, surname, username, country, state,zip);
+
+        List<User> listUser = Lists.newArrayList(userPage);
+        Page<User> usersList = new PageImpl<User>(listUser, PageRequest.of(currentPage, pageSize), (int) userPage.getTotalElements());
+        return usersList;
+    }
 }
