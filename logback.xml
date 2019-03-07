@@ -2,7 +2,7 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>C:\Users\aldo.lushkja\Desktop\spring-workspace\logs\h2-example.log</file>
+        <file>C:\Users\aldo.lushkja\Desktop\spring-workspace\logs-2\log.log</file>
         <append>true</append>
         <encoder>
             <pattern>%-7d{yyyy-MM-dd HH:mm:ss:SSS} %m%n</pattern>
